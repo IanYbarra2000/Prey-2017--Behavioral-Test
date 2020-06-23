@@ -1,4 +1,5 @@
-let template = $('#handlebars').html();
+const startButton= document.getElementById('start-button');
+let template = document.getElementById('handlebars').innerHTML;
 let templateScript = Handlebars.compile(template);
 //Holds questions to use with handlebars
 const context = {
@@ -27,4 +28,18 @@ const context = {
         answers : ["(a) Jump on the tracks.","(b) Push the fat man.","(c) Do nothing."],
         display : false
     }
+    
 };
+let html = templateScript(context);
+const questions= document.getElementById('questions');
+questions.innerHTML=html;
+console.log(html);
+startButton.onclick = () => {
+    context.q1.display=true;
+    html=templateScript(context);
+    questions.innerHTML=html;
+    startButton.style.display="none";
+    questions.style.width='100%';
+    questions.style.display='inline';
+    console.log(questions.style.display);
+}

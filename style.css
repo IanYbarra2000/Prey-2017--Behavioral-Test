@@ -18,6 +18,7 @@ html {
     width:200px;
     height: 200px;
     position: relative;
+    top: 20.5rem;
 }
 main {
     display: flex;
@@ -38,4 +39,11 @@ header {
     top: 0;
     padding: 15px;
     position: fixed;
+}
+#questions {
+    position: relative;
+    display: none;
+    width: 50px;
+    top: 100px;
+    font-size: 25px;
 }
