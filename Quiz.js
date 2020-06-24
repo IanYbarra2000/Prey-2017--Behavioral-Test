@@ -5,27 +5,27 @@ let templateScript = Handlebars.compile(template);
 const context = {
     q1: {
         question : "You're planning a vacation. Go somewhere familiar you love, or try something new?", 
-        answers : ['(a) Familiar','(b) New'],
+        answers : [{text:'(a) Familiar',id: 'a'},{text: '(b) New',id:'b'}],
         display : false
     },
     q2: {
         question : "You've been sentenced to death for your actions. How does this make you feel?", 
-        answers : ["(a) Afraid. I don't know what will happen.","(b) Angry. No one has that right.","(c) Calm. It was worth it."],
+        answers : [{text:"(a) Afraid. I don't know what will happen.",id:'a'},{text:"(b) Angry. No one has that right.",id:'b'},{text:"(c) Calm. It was worth it.",id:'c'}],
         display : false
     },
     q3: {
         question : "A runaway train is bearing down on five people who are tied to the track. You can cause the train to switch tracks, but there is one person tied to the second track.", 
-        answers : ["(a) Switch tracks.","(b) Do nothing."],
+        answers : [{text:"(a) Switch tracks.",id: 'a'},{text:"(b) Do nothing.",id:'b'}],
         display : false
     },
     q4: {
         question : "A runaway train is bearing down on five people. You're standing on the platform next to an enormously fat man. Pushing him into the track would stop the train.", 
-        answers : ["(a) Push the fat man.","(b) Do nothing."],
+        answers : [{text:"(a) Push the fat man.",id:'a'},{text:"(b) Do nothing.",id:'b'}],
         display : false
     },
     q5: {
         question : "A runaway train is bearing down on five people tied to the track. You could stop the train by jumping onto the track, but you would die.", 
-        answers : ["(a) Jump on the tracks.","(b) Push the fat man.","(c) Do nothing."],
+        answers : [{text:"(a) Jump on the tracks.",id:'a'},{text:"(b) Push the fat man.",id:'b'},{text:"(c) Do nothing.",id:'c'}],
         display : false
     }
     

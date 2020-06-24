@@ -46,4 +46,16 @@ header {
     width: 50px;
     top: 100px;
     font-size: 25px;
+    text-align: left;
+}
+#questions p {
+    margin: 5%;
+}
+#questions .Qblock {
+    border: 1px solid gray;
+    padding: .75rem;
+    margin: 3px;
+}
+#questions .Qblock:hover {
+    background-color: white;
 }

@@ -8,11 +8,12 @@
         <script id='handlebars' type="text/x-handlebars-template">
             {{#if q1.display}}
                 <p>{{q1.question}}</p>
-                <ul>
                     {{#each q1.answers}}
-                        <li>{{this}}</li>
+                    <div class="Qblock">
+                        <input type='radio' id={{this.id}} name='choices'>
+                        <label for={{this.id}}>{{this.text}}</label>
+                    </div>
                     {{/each}}
-                </ul>
             {{/if}}
         </script>
         <script type='text/javascript'src='Quiz.js' defer></script>
