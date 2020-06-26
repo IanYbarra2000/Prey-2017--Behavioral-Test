@@ -6,15 +6,17 @@
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         
         <script id='handlebars' type="text/x-handlebars-template">
-            {{#if q1.display}}
-                <p>{{q1.question}}</p>
-                    {{#each q1.answers}}
-                    <div class="Qblock">
-                        <input type='radio' id={{this.id}} name='choices'>
-                        <label for={{this.id}}>{{this.text}}</label>
-                    </div>
-                    {{/each}}
-            {{/if}}
+            {{#each qArray}}
+                {{#if this.display}}
+                    <p>{{this.question}}</p>
+                        {{#each this.answers}}
+                            <div class='answerChoice'>
+                                <input type='radio' id={{this.id}} name='choices'>
+                                <label for={{this.id}}>{{this.text}}</label>
+                            </div>    
+                        {{/each}}
+                {{/if}}
+            {{/each}}
         </script>
         <script type='text/javascript'src='Quiz.js' defer></script>
         
