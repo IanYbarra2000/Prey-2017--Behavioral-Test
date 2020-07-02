@@ -36,14 +36,32 @@ function refreshHandlebars() {
     questions.innerHTML=html;
 }
 refreshHandlebars();
+let slider = $('#transition-slider');
+let clone = slider.clone(true);
+let animaitonEvent;
 startButton.onclick = () => {
+    //sets next question to be displayed
     context.qArray[0].display=true;
     refreshHandlebars();
-    startButton.style.display="none";
-    questions.style.width='100%';
-    questions.style.display='inline';
-    console.log(questions.style.display);
-    runQuestions();
+    
+    slider.addClass('transition');//starts transition
+    animaitonEvent=whichTransitionEvent();
+    //Code in function bellow runs after transition is completed
+    slider.one(animaitonEvent, function(event){
+        //makes start button disappear and makes questions appear
+        startButton.style.display="none";
+        questions.style.width='100%';
+        questions.style.display='inline';
+        //console.log(slider);
+        //clone used to effectively reset the transition
+        slider.before(clone);
+        $('.'+slider.attr('class')+':last').remove();
+        //console.log(clone);
+        slider=clone;
+        clone = slider.clone(true);
+        //console.log(slider);
+        runQuestions();
+    });
 }
 
 function nextQuestion() {
@@ -51,20 +69,56 @@ function nextQuestion() {
         if(context.qArray[x].display){
             context.qArray[x].display=false;
             context.qArray[x+1].display=true;
-            console.log((x+1)+' true' );
-            setTimeout(refreshHandlebars(),1000);
-            runQuestions();
+            console.log(slider);
+            clone=slider.clone(true);
+            slider.addClass('transition');
+            animaitonEvent=whichTransitionEvent();
+            slider.one(animaitonEvent, function(event){
+                console.log('here');
+                refreshHandlebars();
+                
+                slider.before(clone);
+                console.log(slider.attr('class'));
+                $('.'+slider.attr('class')+':last').remove();
+                slider=clone;
+                clone = slider.clone(true);
+                runQuestions();
+            });
+            
             break;
         }
     }
 }
 function runQuestions(){
     const ac = document.getElementsByClassName('answerChoice');
+    console.log('here run');
     for(let x=0;x<ac.length;x++){
-        ac.item(x).onclick = () => {
+        console.log(ac.item(x).firstElementChild);
+        ac.item(x).firstElementChild.addEventListener('change', function() {
             nextQuestion();
-            console.log('here '+x);
-        }
+        });
     }
 }
 
+function whichTransitionEvent(){
+    let el = document.createElement("fakeelement");
+    const transitions = {
+      "transition"      : "transitionend",
+      "OTransition"     : "oTransitionEnd",
+      "MozTransition"   : "transitionend",
+      "WebkitTransition": "webkitTransitionEnd"
+    }
+  
+    for (let t in transitions){
+      if (el.style[t] !== undefined){
+        return transitions[t];
+      }
+    }
+  }/*code for this function taken from Jonathan Suh at https://jonsuh.com/blog/detect-the-end-of-css-animations-and-transitions-with-javascript/ */
+/*
+TO DO:
+-detect transitions
+-add rorschach test to end of questions
+-continue formating
+-more as I think of it
+*/

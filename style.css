@@ -1,6 +1,7 @@
 html {
     font-family: Jost;
     background-color: #d9d9d9;
+    z-index: 2;
 }
 #start-button h1 {
     font-size: 4.8rem;
@@ -40,6 +41,7 @@ header {
     top: 0;
     padding: 15px;
     position: fixed;
+    z-index: 3;
 }
 #questions {
     position: relative;
@@ -48,6 +50,7 @@ header {
     top: 100px;
     font-size: 25px;
     text-align: left;
+    z-index: 1;
 }
 #questions p {
     margin: 5%;
@@ -69,4 +72,24 @@ header {
 }
 #questions input[type="radio"]:checked + label {
     background-color: rgba(255, 217, 0, 0.856);
+}
+#transition-slider {
+    background-color: #d9d9d9;
+    border: 1px solid black;
+    position: fixed;
+    overflow: hidden;
+    left:100%;
+    right:0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transition-property: left, z-index;
+    transition-duration: 1s, 0s;
+    transition-timing-function: ease-in-out, linear;
+    transition-delay: 1s, 2s;
+}
+.transition {
+    left:0% !important;
+    z-index: 1 !important;
 }
