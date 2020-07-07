@@ -12,7 +12,10 @@
                         {{#each this.answers}}
                             <div class='answerChoice'>
                                 <input type='radio' id={{this.id}} name='choices'>
-                                <label for={{this.id}}>{{this.text}}</label>
+                                <label for={{this.id}}>{{this.text}}
+                                    <div class='circle'></div>
+                                </label>
+                                
                             </div>    
                         {{/each}}
                 {{/if}}
