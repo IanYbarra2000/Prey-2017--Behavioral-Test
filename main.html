@@ -3,6 +3,7 @@
     <head>
         <link href="style.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
+        <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script id='handlebars' type="text/x-handlebars-template">
@@ -13,7 +14,8 @@
                             <div class='answerChoice'>
                                 <input type='radio' id={{this.id}} name='choices'>
                                 <label for={{this.id}}>{{this.text}}
-                                    <div class='circle'></div>
+                                    <div class='circle'><img class='check' src='check.png' alt='check mark' ></div>
+                                    
                                 </label>
                                 
                             </div>    
@@ -27,6 +29,7 @@
     </head>
     <body>
         <header>
+            <img class='logo' src='Transtar-Logo.png' alt='transtar logo'>
             <h2>TRANSTAR</h2>
         </header>
         <main>

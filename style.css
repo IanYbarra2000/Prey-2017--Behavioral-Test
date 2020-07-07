@@ -39,9 +39,32 @@ header {
     left: 0;
     right: 0;
     top: 0;
-    padding: 15px;
+    padding: 5px;
     position: fixed;
+    display: flex;
     z-index: 3;
+    font-weight: 100;
+    align-content: center;
+}
+.logo {
+    width: 80px;
+    height:67px;
+    display: inline-block;
+    color: white;
+    margin: 0 5px;
+
+}
+header h2 {
+    display: inline-block;
+    color: white;
+    font-size: 45px;
+    margin: 0px;
+    letter-spacing: 5px;
+    font-family: 'Advent Pro';
+    position: relative;
+    top: 70%;
+    
+    
 }
 #questions {
     position: relative;
@@ -77,6 +100,7 @@ header {
     border-radius: 100%;
     border: 1px solid grey;
     float: right;
+    position: relative;
 }
 #questions input[type="radio"]:checked + label {
     background: linear-gradient(4deg, rgba(255,219,35,1) 62%, rgba(255,255,255,1) 94%);
@@ -100,4 +124,16 @@ header {
 .transition {
     left:0% !important;
     z-index: 1 !important;
+}
+.check {
+    width:71px;
+    height: 58px;
+    position: absolute;
+    right: -70%;
+    bottom: 5%;
+    visibility: hidden;
+}
+
+#questions input[type="radio"]:checked + label .check {
+    visibility: visible;
 }
