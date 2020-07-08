@@ -65,7 +65,8 @@ startButton.onclick = () => {
 }
 
 function nextQuestion() {
-    for(let x=0;x<context.qArray.length-1;x++){
+    let x;
+    for(x=0;x<context.qArray.length-1;x++){
         if(context.qArray[x].display){
             context.qArray[x].display=false;
             context.qArray[x+1].display=true;
@@ -87,6 +88,22 @@ function nextQuestion() {
             
             break;
         }
+    }
+    if(x===context.qArray.length-1){
+        context.qArray[x].display=false;
+        
+        clone=slider.clone(true);
+        slider.addClass('transition');
+        animaitonEvent=whichTransitionEvent();
+        slider.one(animaitonEvent,function(event){
+            refreshHandlebars();
+            slider.before(clone);
+            console.log(slider.attr('class'));
+            $('.'+slider.attr('class')+':last').remove();
+            slider=clone;
+            clone = slider.clone(true);
+            $('#main').addClass('rorschach');
+        });
     }
 }
 function runQuestions(){
