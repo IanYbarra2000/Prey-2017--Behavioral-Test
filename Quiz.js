@@ -52,34 +52,28 @@ startButton.onclick = () => {
         startButton.style.display="none";
         questions.style.width='100%';
         questions.style.display='inline';
-        //console.log(slider);
         //clone used to effectively reset the transition
         slider.before(clone);
         $('.'+slider.attr('class')+':last').remove();
-        //console.log(clone);
         slider=clone;
         clone = slider.clone(true);
-        //console.log(slider);
         runQuestions();
     });
 }
-
+//handles transitioning to next question after a question is answered
 function nextQuestion() {
     let x;
     for(x=0;x<context.qArray.length-1;x++){
         if(context.qArray[x].display){
             context.qArray[x].display=false;
             context.qArray[x+1].display=true;
-            console.log(slider);
             clone=slider.clone(true);
             slider.addClass('transition');
             animaitonEvent=whichTransitionEvent();
             slider.one(animaitonEvent, function(event){
-                console.log('here');
                 refreshHandlebars();
                 
                 slider.before(clone);
-                console.log(slider.attr('class'));
                 $('.'+slider.attr('class')+':last').remove();
                 slider=clone;
                 clone = slider.clone(true);
@@ -89,6 +83,7 @@ function nextQuestion() {
             break;
         }
     }
+    //if last question is answered show the rorschach test
     if(x===context.qArray.length-1){
         context.qArray[x].display=false;
         
@@ -98,7 +93,6 @@ function nextQuestion() {
         slider.one(animaitonEvent,function(event){
             refreshHandlebars();
             slider.before(clone);
-            console.log(slider.attr('class'));
             $('.'+slider.attr('class')+':last').remove();
             slider=clone;
             clone = slider.clone(true);
@@ -106,11 +100,10 @@ function nextQuestion() {
         });
     }
 }
+//adds event listeners to each answer choice
 function runQuestions(){
     const ac = document.getElementsByClassName('answerChoice');
-    console.log('here run');
     for(let x=0;x<ac.length;x++){
-        console.log(ac.item(x).firstElementChild);
         ac.item(x).firstElementChild.addEventListener('change', function() {
             nextQuestion();
         });
@@ -132,10 +125,3 @@ function whichTransitionEvent(){
       }
     }
   }/*code for this function taken from Jonathan Suh at https://jonsuh.com/blog/detect-the-end-of-css-animations-and-transitions-with-javascript/ */
-/*
-TO DO:
--detect transitions
--add rorschach test to end of questions
--continue formating
--more as I think of it
-*/

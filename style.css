@@ -134,6 +134,7 @@ header p {
     transition-duration: .6s, 0s;
     transition-timing-function: ease-out, linear;
     transition-delay: 1s, 2s;
+
 }
 .transition {
     left:0% !important;
